@@ -1,0 +1,78 @@
+<?php  ?>
+<table>
+<tr><td>
+        <form  action="../order" method="POST" >
+                <select onchange="this.form.submit()" class="selectpicker show-tick " standard title="Select Status" data-style="btn-info" data-width="fit" data-live-search="true" name="status">
+               
+                <option> Paid</option>
+                <option >Processing</option>
+                <option >Dispatched</option>
+                <option >Shipped</option>
+                <option >Refunded</option>
+               </select>     
+     </form>
+        </td>
+        <td>
+        <form  action="../order" method="POST" >
+                <select onchange="this.form.submit()" class="selectpicker show-tick " standard title="Date Range" data-style="btn-dark" data-width="fit" data-live-search="true" name="date">
+                <option>Today</option>
+                <option>This Week</option>
+                <option>This Month</option>
+               </select>
+               
+    </form>
+        </td>
+        <form action="../order" method="POST">
+        <td>From:<input type="text" name="from" placeholder="dd-mm-yyyy" required></td>
+        <td>To:<input type="text" name="to" placeholder="dd-mm-yyyy" required></td>
+        <td><button class="btn btn-secondary btn-sm" name="btnCustom" value="btnCustom" >Filter</button></td>
+        </form>
+    </tr>
+</table>
+    <table class="table">
+        <thead><tr>
+    <th>Customer</th>
+    <th>Product</th>
+    <th>Category</th>
+    <th>Variation</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Total Price</th>
+    <th>Status</th>
+    <th>Date</th>
+     </tr></thead>
+   <?php foreach($result as $v){?>
+    <tbody>
+   <tr>
+   <td><?php echo $v->customerName; ?></td>
+    <td><?php echo $v->productName; ?></td>
+   <td><?php echo $v->category; ?></td>
+   <?php if($v->variations){?>
+    <td><b><?php echo $v->variations[0].":";?></b><?php echo $v->variations[1];?></td>
+    <?php }?>
+   <td><?php echo $v->price; ?></td>
+   <td><?php echo $v->quantity; ?></td>
+   <td><?php echo $v->totalPrice; ?></td>
+   
+   <td><form  action="../order/changeStatus" method="POST" >
+                <select onchange="this.form.submit()" class="selectpicker show-tick " data-style="btn-info" data-width="fit" data-live-search="true" name="status">
+                <option><?php echo  $v->status?></option>
+                <option> Paid</option>
+                <option >Processing</option>
+                <option >Dispatched</option>
+                <option >Shipped</option>
+                <option >Refunded</option>
+               </select>
+               <input type="hidden" value="<?php echo $v->_id; ?>" name="btnChange" >
+    </form></td>
+
+    <td class="btn btn-success ">
+                <?php echo  date("d-m-Y",$v->date); ?></option>   
+    </td>
+   
+    <!-- <button type="button" class="btn btn-success editbtn"> EDIT </button> -->
+</tr>
+
+   <?php }?>
+    </tbody>
+    </table>

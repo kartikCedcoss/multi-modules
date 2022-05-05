@@ -1,0 +1,31 @@
+<form action="../product/add" method="POST">
+    <table>
+        <tr><td>Name:</td><td><input type="text" name="pName"></td></tr>
+        <tr><td>Category Name:</td><td><input type="text" name="catName"></td></tr>
+        <tr><td>Price:</td><td><input type="text" name="pPrice"></td></tr>
+        <tr><td>Stock:</td><td><input type="text" name="pStock"></td></tr>
+       <?php if($temp == 1){
+           echo '<tr><td>Meta Fields:</td><td><input type="text" name="metaLabel" placeholder="Label"><br><input type="text" name="metavalue" placeholder="Value"></td></tr>';
+       } ?>
+        <?php if($temp == 2){?>
+          <tr><td>Meta Fields:</td><td><input type="text" name="metaLabel" placeholder="Label"><br><input type="text" name="metaValue" placeholder="Value"></td></tr>
+          <tr><td>Variations:</td><td><input type="text"  name="attrName" ><br>
+      <input name="attrValue" type="text"><br>
+      <input type="text" name="varPrice" placeholder="Price"></td></tr>
+      <?php } ?>
+        <tr><td><button class="btn btn-warning" >ADD</button></td></tr>
+        </form>
+        <tr><td></td><td></td><td><form action="../product" method="POST">
+            <?php if ($temp == 0){ ?>
+            <button class="btn" name="addField" value="<?php echo $temp; ?>"><b>+</b></button>
+            <?php } ?></td>
+            <?php if($temp !=0){?>
+            <td><button class="btn" name="addField" value="<?php echo $temp; ?>"><b>+</b></button></td>
+            <td><button class="btn" name="decField" value="<?php echo $temp; ?>"><b>-</b></button>
+            <?php }?>
+        </td></form></tr>
+    </table>
+
+    
+
+    

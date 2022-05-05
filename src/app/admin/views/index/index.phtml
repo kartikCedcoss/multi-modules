@@ -1,0 +1,33 @@
+<table><tr>
+    <td><a class="btn btn-primary" href="order" >Orders</a></td>
+    <td><a class="btn btn-success" href="product" >Add Product</a></td>
+    <td><form action="../product/search" method="POST"><input onchange="this.form.submit()" type="text" placeholder="Search Product Name" name="search" ></form></td>
+    <td></td><td></td><td></td><td></td><td></td><td></td><td><a href="../login/logout" >Log Out</a></td>
+</tr></table>
+<?php  ?>
+    <table class="table">
+        <thead><tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Price</th>
+    <th>Stock</th></tr></thead>
+   <?php foreach($result as $v){?>
+    <tbody>
+   <tr>
+    
+    <td><?php echo $v->name; ?></td>
+   <td><?php echo $v->category; ?></td>
+   <td><?php echo $v->price; ?></td>
+   <td><?php echo $v->stock; ?></td>
+   <td><form  action="../order/neworder" method="POST" ><button class="btn btn-warning" name="newOrder" value="<?php echo $v->_id; ?>" >Order Now</button></form></td>
+
+   <td><form action="../product/edit" method="POST"><button  class="btn btn-primary" name="view" value="<?php echo $v->_id; ?>" data-toggle="modal" data-target="#exampleModalCenter">
+    Quick View
+    </button></form>
+</td>
+   <td><form  action="../product/delete" method="POST" ><button class="btn btn-danger" name="delete" value="<?php echo $v->_id; ?>" >Delete</button></form></td></tr>
+
+   <?php }?>
+    </tbody>
+    </table>
+ 

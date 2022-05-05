@@ -1,0 +1,31 @@
+<table><tr>
+    <td></td><td><a href="../login" >Login</a></td><td></td></tr>
+<tr>    <td></td><td></td>
+    <td><form action="../products/search" method="POST"><input onchange="this.form.submit()" type="text" placeholder="Search Product Name" name="search" ></form></td>
+</tr></table>
+<?php  ?>
+    <table class="table">
+        <thead><tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Price</th>
+    <th>Stock</th></tr></thead>
+   <?php foreach($result as $v){?>
+    <tbody>
+   <tr>
+    
+    <td><?php echo $v->name; ?></td>
+   <td><?php echo $v->category; ?></td>
+   <td><?php echo $v->price; ?></td>
+   <td><?php echo $v->stock; ?></td>
+  
+   <td><form action="../products/edit" method="POST"><button  class="btn btn-primary" name="view" value="<?php echo $v->_id; ?>" data-toggle="modal" data-target="#exampleModalCenter">
+    Quick View
+    </button></form>
+    
+</td>
+   </tr>
+
+   <?php }?>
+    </tbody>
+    </table>

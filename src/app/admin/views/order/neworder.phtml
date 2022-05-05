@@ -1,0 +1,19 @@
+<form action="../order/placeorder" method="POST">
+    <table>
+    <tr><td>Customer Name:</td><td><input type="text" name="custName" ></td></tr>
+        <tr><td>Product Name:</td><td><input type="text" name="opName" value="<?php echo $result->name; ?>"></td></tr>
+        <tr><td>Category Name:</td><td><input type="text" name="ocatName" value="<?php echo $result->category; ?>"></td></tr>
+        <tr><td>Price:</td><td><input type="text" name="opPrice" value="<?php echo $result->price; ?>"></td></tr>
+        <tr><td>Quantity:</td><td><input type="text" name="quantity" value="1" ></td></tr>
+      
+        <?php if($result->variations[0] != "" ){ ?> 
+      <tr><td></td><td><b>Variations:-</b></td></tr><tr><td></td>
+      <td><input type="text"  name="oattrName" value="<?php echo $result->variations[0]; ?>"></td>
+      <td><input name="oattrValue" type="text" value="<?php echo $result->variations[1]; ?>"></td>
+     </tr>
+  <?php } ?>
+     <input type="hidden"  value="<?php echo $result->_id; ?>" name="id">
+        <tr><td><button class="btn btn-warning" >Place Order</button></td></tr>
+     
+    </table>
+</form>

@@ -1,0 +1,17 @@
+<form action="../product/update" method="POST">
+    <table>
+        <tr><td>Name:</td><td><input type="text" name="upName" value="<?php echo $result->name; ?>"></td></tr>
+        <tr><td>Category Name:</td><td><input type="text" name="ucatName" value="<?php echo $result->category; ?>"></td></tr>
+        <tr><td>Price:</td><td><input type="text" name="upPrice" value="<?php echo $result->price; ?>"></td></tr>
+        <tr><td>Stock:</td><td><input type="text" name="upStock" value="<?php echo $result->stock; ?>"></td></tr>
+      
+          <tr><td>Meta Fields:</td><td><input type="text" name="umetaLabel" placeholder="Label"value="<?php echo $result->meta[0]; ?>"><br>
+          <input type="text" name="umetaValue" placeholder="Value" value="<?php echo $result->meta[1]; ?>"></td></tr>
+          <tr><td>Variations:</td><td><input type="text"  name="uattrName" value="<?php echo $result->variations[0]; ?>"><br>
+      <input name="uattrValue" type="text" value="<?php echo $result->variations[1]; ?>"><br>
+      <input type="text" name="uvarPrice" placeholder="Price" value="<?php echo $result->variations[2]; ?>"></td></tr>
+      <input type="hidden"  value="<?php echo $result->_id; ?>" name="id" >
+    
+        <tr><td><button class="btn btn-warning" >Update</button></td></tr>
+     
+    </table>
